@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Business Card - Moataz Ahmed Madkour</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #80deea);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            background: #ffffff;
+            width: 380px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            overflow: hidden;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #00acc1;
+            margin-bottom: 15px;
+        }
+        h1 { font-size: 22px; color: #007c91; margin-bottom: 5px; }
+        h2 { font-size: 16px; color: #555; font-weight: normal; margin-bottom: 20px; }
+        .info { font-size: 14px; color: #333; margin-bottom: 20px; line-height: 2; text-align: left; }
+        .info div { display: flex; align-items: center; gap: 10px; }
+        .info img { width: 24px; height: 24px; }
+        .download-btn {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: #00acc1;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .download-btn:hover { background: #007c91; }
+        @media (max-width: 400px) {
+            .card { width: 100%; padding: 20px; }
+            .info div { gap: 5px; }
+            .info img { width: 20px; height: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <!-- Profile Image -->
+    <img src="profile.png" alt="Moataz Ahmed Madkour" class="profile-img">
+
+    <!-- Name and Job -->
+    <h1>Moataz Ahmed Madkour</h1>
+    <h2>Financial Accounts Manager<br>Techno Converting Services</h2>
+
+    <!-- Info Section with Logos -->
+    <div class="info">
+        <div><img src="phone_logo.png" alt="Phone Icon"> +20 100 558 9716</div>
+        <div><img src="whatsapp_logo.png" alt="WhatsApp Icon"> +20 100 558 9716</div>
+        <div><img src="email_logo.png" alt="Email Icon"> motazmadkour5@gmail.com</div>
+        <div><img src="linkedin_logo.png" alt="LinkedIn Icon"> <a href="https://www.linkedin.com/in/motaz-madkour" target="_blank">LinkedIn Profile</a></div>
+    </div>
+
+    <!-- Download Buttons -->
+    <a href="#" class="download-btn" onclick="downloadCard()">Download Card as Image</a>
+    <a href="contact.vcf" class="download-btn" download="MoatazAhmedMadkour.vcf">Download vCard</a>
+</div>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+    function downloadCard() {
+        const card = document.querySelector('.card');
+        html2canvas(card).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'MoatazAhmedMadkour_BusinessCard.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    }
+</script>
+
+</body>
+</html>
