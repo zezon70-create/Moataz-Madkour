@@ -1,23 +1,190 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>بbusiness card</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <title>Digital Business Card - Moataz Ahmed Madkour</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #80deea);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            background: #ffffff;
+            width: 380px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            overflow: hidden;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #00acc1;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+            opacity: 0;
+        }
+        .profile-img.show {
+            opacity: 1;
+        }
+        .profile-img:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+        h1, h2 {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        h1.show, h2.show {
+            opacity: 1;
+        }
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .info a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            background: #e0f7fa;
+            color: #007c91;
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.2s ease, opacity 0.5s ease;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+        }
+        .info a img { width: 24px; height: 24px; }
+        .info a.show {
+            opacity: 1;
+        }
+        .info a:hover {
+            background: #00acc1;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        .info a:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .download-btn {
+            margin-top: 10px;
+            padding: 12px 25px;
+            background: #00acc1;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease, opacity 0.5s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+        }
+        .download-btn.show {
+            opacity: 1;
+        }
+        .download-btn:hover {
+            background: #007c91;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        .download-btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 400px) {
+            .card { width: 100%; padding: 20px; }
+            .info a { font-size: 13px; padding: 8px 12px; }
+            .info a img { width: 20px; height: 20px; }
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <img src="profile.jpg" alt="Profile" class="profile-img">
-    <h2>Moataz Madkour</h2>
-    <p>Financial Accounts Manager - TCS</p>
-    <div class="social-icons">
-      <a href="mailto:example@mail.com" target="_blank"><i class="fas fa-envelope"></i></a>
-      <a href="tel:+201005589716" target="_blank"><i class="fas fa-phone"></i></a>
-      <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.github.com" target="_blank"><i class="fab fa-github"></i></a>
+
+<div class="card" id="businessCard">
+    <img src="profile.png" alt="Moataz Ahmed Madkour" class="profile-img" id="profileImg">
+    <h1 id="name">Moataz Ahmed Madkour</h1>
+    <h2 id="job">Financial Accounts Manager<br>Techno Converting Services</h2>
+    <div class="info">
+        <a href="tel:+201005589716"> <img src="phone_logo.png" alt="Phone Icon"> +20 100 558 9716 </a>
+        <a href="https://wa.me/201005589716" target="_blank"> <img src="whatsapp_logo.png" alt="WhatsApp Icon"> +20 100 558 9716 </a>
+        <a href="mailto:motazmadkour5@gmail.com"> <img src="email_logo.png" alt="Email Icon"> motazmadkour5@gmail.com </a>
+        <a href="https://www.linkedin.com/in/motaz-madkour" target="_blank"> <img src="linkedin_logo.png" alt="LinkedIn Icon"> LinkedIn Profile </a>
     </div>
-  </div>
+    <a href="#" class="download-btn" onclick="downloadCard()">Download Card as Image</a>
+    <a href="contact.vcf" class="download-btn" download="MoatazAhmedMadkour.vcf">Download vCard</a>
+</div>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const card = document.getElementById('businessCard');
+        card.classList.add('show');
+
+        // ظهور تدريجي للعناصر
+        const profile = document.getElementById('profileImg');
+        const name = document.getElementById('name');
+        const job = document.getElementById('job');
+        const infoLinks = card.querySelectorAll('.info a');
+        const downloadBtns = card.querySelectorAll('.download-btn');
+
+        let delay = 200;
+
+        setTimeout(() => profile.classList.add('show'), delay);
+        delay += 200;
+        setTimeout(() => name.classList.add('show'), delay);
+        delay += 150;
+        setTimeout(() => job.classList.add('show'), delay);
+
+        infoLinks.forEach((link, index) => {
+            setTimeout(() => link.classList.add('show'), delay + (index * 150));
+        });
+
+        let downloadDelay = delay + infoLinks.length * 150;
+        downloadBtns.forEach((btn, index) => {
+            setTimeout(() => btn.classList.add('show'), downloadDelay + (index * 150));
+        });
+    });
+
+    function downloadCard() {
+        const card = document.querySelector('.card');
+        html2canvas(card).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'MoatazAhmedMadkour_BusinessCard.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    }
+</script>
+
 </body>
 </html>
